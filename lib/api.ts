@@ -15,12 +15,12 @@ const POST_GRAPHQL_FIELDS = `
 
 async function fetchGraphQL(query: string, preview = false): Promise<any> {
   return fetch(
-    `https://graphql.contentful.com/content/v1/spaces/zvuvf4y77x2g`, //ENV???
+    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`, //ENV???
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer uvvGbLFSkRPXOH3-pURBIb2H5e4KJxWTTilhywVcA4w`, //ENV???
+        Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
       },
       body: JSON.stringify({ query }),
       next: { tags: ["posts"] },
